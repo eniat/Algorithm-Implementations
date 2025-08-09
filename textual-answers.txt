@@ -1,0 +1,60 @@
+Q. (i.) Design an in place algorithm for removing all repeated elements from an array containing n integers in the range from 0 to 1000 that runs in Theta(n) time in the worst case and *does not use hashing*. There may be satellite data associated with the integer keys and your algorithm should only remove repeated elements that occur later in the sequence, retaining those that appear first. Write your algorithm in pseudocode.
+
+Answer:
+In Python code as stated in can be in the question:
+
+def duplicate_remove(A):
+
+    # Initializing B array with -1's to track first occurrences 0-1000
+    B = [-1] * (1000 +1)
+
+    # Keeps the position to write unique elements to
+    i = 0
+
+    # Goes through the A array checking if a number is unique and moves it to the front
+    for num in A:
+        if B[num] == -1: #Checking it's the first occurrence
+            B[num] = i # Store position
+            A[i] = num # move it to the front/ new position
+            i +=1 # Move on
+
+    # removes all the excess duplicates
+    del A[i:]
+
+    return A
+
+
+
+Q. (ii.) A physics experiment collects millions of measurements from a number of different instruments and collates data into an array. Each measurement is stored as a record containing the numerical measurement itself (a quantity v in the range 0 <= v < 99999 measured to 5 decimal places and stored in *fixed point representation*), along with other metadata about the instrument that took the measurement, the exact time of measurement, etc. Describe an asymptotically optimal algorithm for identifying two records holding measurements that are *most similar* (i.e. having *values that are closest*) among the millions of records gathered in the experiment.
+
+Answer:
+- A variation of the radix sort would be the best first step for this
+- Radix sort uses a stable sorting algorithm to sort each digit (in this case I'll use counting sort), keeping the relevant metadata
+- It takes ϴ(d(n+k)) in both best and worse case and when d is a constant and k ∈ O(n), Radix sort runs in linear time in the size of A. 
+- After it is sorted we can use a one-pass algorithm to then check to find which measurements are most similar as they will have to be adjacent once sorted. 
+- This will occur in ϴ(n) time for both the worst and best case.
+- Bringing the total time for this to occur is ϴ(n), which is asymptomatically optimal as it is the lowest bound for the problem because it has to look at all n elements.
+
+
+Q. (iv.) What is the worst case running time of your algorithm? 
+
+Answer: 
+The worst case time complexity is as follows. For the building of the graph it is O(m) as the inout is m clauses which form directed edges. The first DFS pass visits every node once and all outgoing edges for O(n +m). Finally the second DFS processes each node and edge once for O(n + m). That makes the worst case time complexity of O(m) + O(n+m) + O(n +m) = O(n + m).
+
+
+
+Q. (v.) (a) Give precise definitions of a full binary tree and a complete binary tree. How are these notions different?
+
+Answer:
+A full binary tree is a binary tree where each node is either a leaf or has degree exactly 2. This means that every parent node or internal node has either two or no children making them either a leaf node or have exactly 2 children. A complete binary tree is a tree where all of the levels of the tree are completely filled except for the lowest level and on the lowest level they are filled from as left as possible to right. This means that the differences are a complete binary tree can have a node with only 1 child where a full binary tree can not. A complete binary tree is often used in heap based data structures where as a full binary tree has no similar application. A full binary tree can be filled in any order where as a complete binary tree has to be filled from left to right. 
+
+
+``
+Q. (vi.) (a)  Give a definition of the heap data structure and state its main properties.
+
+Answer: 
+A heap is a complete binary tree structure that also satisfies the heap property. There are two main heap properties the first being max heap which means the value of each parent node is greater than or equal to the values of it's children and min heap where the value of each parent node is less than or equal to the values of its children. The heap also stores a collection of objects with its keys. A heap is normally implemented as an array where each node in the tree corresponds to an element of the array. arr[(i-1)/2] returns the parent node, arr[(2*i)+1] returns the left child node and finally arr[(2*i)+2] returns the right child node.
+
+
+
+
