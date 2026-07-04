@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+
+# C build outputs
+radixsort
+radixsort.exe
+*.o
+*.out
