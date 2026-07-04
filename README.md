@@ -9,6 +9,7 @@ The work demonstrates core data-structure implementation and algorithmic problem
 
 ```text
 .
+├── q1-inplace-duplicate-removal.py
 ├── q3-radixsort.c
 ├── q4-prop-stat.py
 ├── q5b-linked-list-quicksort.py
@@ -18,6 +19,10 @@ The work demonstrates core data-structure implementation and algorithmic problem
 ```
 
 ## Implemented Work
+
+### In-place Duplicate Removal
+
+`q1-inplace-duplicate-removal.py` removes duplicate values from an integer array while preserving the first occurrence of each value. It uses a fixed-size tracking array for values in the range 0–1000 and updates the input list in place.
 
 ### Radix Sort in C
 
